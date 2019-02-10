@@ -1,0 +1,40 @@
+
+<style>
+    .container {
+
+  border: 10px solid red;
+      width: 800px;
+      background-color: gray;
+      height: 500px;
+      justify-content: center;
+    }
+    .main{
+      text-align: center;
+      width: 500px;
+        /* justify-content: center; */
+        border: 5px solid green;
+    }
+    .results {
+      /* justify-content: flex-end; */
+      /* display: block; */
+      width: 250px;
+      border: 1px solid black;
+      /* margin-left: 50px; */
+      background-color: {{ color_on_template}}
+    }
+
+</style>
+
+<body>
+  <div class="container">
+      <div class="main">
+          <h1>Welcome to the Great Number Game</h1>
+          <p>I am thinking of a number between 1 and 100</p>
+          <p>Take a guess!</p>
+      </div>
+      <div class="results">
+          <h3>The computer guess was: {{ session['test'] }}</h3>
+          <h3>Your guess was: {{ guess_on_template }}</h3>
+      </div>
+  </div>
+</body>

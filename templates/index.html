@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Gold</title>
+  </head>
+
+  <style>
+
+    * {
+      color: white;
+    }
+      .container {
+        background-color: black;
+        width: 1100px;
+        height: 800px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-around;
+      }
+      .main_top {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .main_top p {
+        margin-bottom: 100px;
+      }
+
+      .main_top div:nth-child(1) {
+        background-color: green;
+      }
+      .main_top div:nth-child(2) {
+        background-color: lightblue;
+      }
+      .main_top div:nth-child(3) {
+        background-color: red;
+      }
+      .main_top div:nth-child(4) {
+        background-color: purple;
+      }
+
+      .box_top {
+        text-align: center;
+        border-radius: 10px;
+        width: 200px;
+        height: 300px;
+      }
+      .box_bottom {
+        border-radius: 10px;
+        background-color: lightblue;
+        max-height: 200px;
+        width: 700px;
+        margin-bottom: 50px;
+      }
+
+      .main_bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+        height: 300px;
+
+      }
+      .scroll-box {
+          overflow-y: scroll;
+          background-color: blue;
+      }
+      .box_bottom p{
+
+      }
+
+
+      input[type=button], input[type=submit], input[type=reset] {
+      background-color: gray;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+      font-size: 15px;;
+}
+
+  </style>
+
+  <body>
+
+      <div class="container">
+          <div class="header">
+              <h1>Total Gold:  {{ session['total_gold']}}</h1>
+              <h1>Ninja Gold!</h1>
+          </div>
+          <div class="main_top">
+              <div class="box_top">
+                <h2>Farm</h2>
+                <p>(earns 10-20 golds)</p>
+                <form action='/process_money' method='post'>
+                <!-- Name: <input type='text' name='name'> -->
+                    <input type="hidden" id="farm" name="places" value="farm">
+                    <input type='submit' value='Find Gold!'>
+                  </form>
+              </div>
+
+              <div class="box_top">
+                <h2>Cave</h2>
+                <p>(earns 5-10 golds)</p>
+                <form action='/process_money' method='post'>
+                    <input type="hidden" id="farm" name="places" value="cave">
+                    <input type='submit' value='Find Gold!'>
+                  </form>
+              </div>
+
+              <div class="box_top">
+                <h2>House</h2>
+                <p>(earns 2-5 golds)</p>
+                <form action='/process_money' method='post'>
+                    <input type="hidden" id="farm" name="places" value="house">
+                    <input type='submit' value='Find Gold!'>
+                  </form>
+              </div>
+              <div class="box_top">
+                <h2>Casino</h2>
+                <p>(earns 0-50 golds)</p>
+                <form action='/process_money' method='post'>
+                    <input type="hidden" id="farm" name="places" value="casino">
+                    <input type='submit' value='Find Gold!'>
+                  </form>
+              </div>
+          </div>
+          <div class="main_bottom">
+              <div class="box_bottom scroll-box">
+                {% for i in session['activities'] %}
+                <p class="activities">{{ i }}</p>
+                {%endfor%}
+              </div>
+              <div class="start_again">
+                  <form action='/destroy_session' method='post'>
+                    <input type="hidden" id="farm" name="places" value="farm">
+                    <input type='submit' value='Start Over!'>
+                  </form>
+              </div>
+
+          </div>
+
+      </div>
+
+  </body>
+</html>
